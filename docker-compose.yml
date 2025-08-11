@@ -1,6 +1,8 @@
 services:
   mariadb:
-    build: ./dockerfiles/Dockerfile.mariadb
+    build:
+      context: .
+      dockerfile: /dockerfiles/Dockerfile.mariadb
     image: mariadb
     container_name: "mariadb"
     restart: always
@@ -13,7 +15,9 @@ services:
       - app-network
   
   php:
-    build: ./dockerfiles/Dockerfile.php
+    build:
+      context: .
+      dockerfile: /dockerfiles/Dockerfile.php
     image: php
     container_name: "php"
     restart: always
@@ -27,7 +31,9 @@ services:
      - app-network
     
   nginx:
-    build: ./dockerfiles/Dockerfile/nginx
+    build:
+      context: .
+      dockerfile: /dockerfiles/Dockerfile.nginx
     image: nginx
     container_name: "nginx"
     restart: "always"
