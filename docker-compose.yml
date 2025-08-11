@@ -1,0 +1,50 @@
+services:
+  mariadb:
+    build: ./dockerfiles/Dockerfile.mariadb
+    image: mariadb
+    container_name: "mariadb"
+    restart: always
+    ports:
+      - "3306:3306"
+    env_file: ".env"
+    volumes: 
+      - db-data:/var/lib/mysql
+    networks:
+      - app-network
+  
+  php:
+    build: ./dockerfiles/Dockerfile.php
+    image: php
+    container_name: "php"
+    restart: always
+    ports:
+     - "9000:9000"
+    volumes:
+     - ./src:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+     - app-network
+    
+  nginx:
+    build: ./dockerfiles/Dockerfile/nginx
+    image: nginx
+    container_name: "nginx"
+    restart: "always"
+    ports:
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - app-network
+    
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  db-data:
+    driver: local
+
+    
