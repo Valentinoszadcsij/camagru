@@ -4,6 +4,7 @@ set -e
 # initialize MariaDB
 echo "Running MariaDB init script"
 mkdir -p /run/mysqld
+mkdir -p /tmp
 chown -R mysql:mysql /run/mysqld
 
 echo "Initializing DB"
@@ -15,6 +16,7 @@ fi
 # start MariaDB service 
 echo "Starting MariaDB..."
 chown -R mysql:mysql /var/lib/mysql
+chown -R mysql:mysql /tmp
 mysqld --user=mysql --datadir=/var/lib/mysql --skip-networking &
 pid="$!"
 

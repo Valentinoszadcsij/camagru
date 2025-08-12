@@ -2,7 +2,7 @@ services:
   mariadb:
     build:
       context: .
-      dockerfile: /dockerfiles/Dockerfile.mariadb
+      dockerfile: dockerfiles/Dockerfile.mariadb
     image: mariadb
     container_name: "mariadb"
     restart: always
@@ -10,14 +10,14 @@ services:
       - "3306:3306"
     env_file: ".env"
     volumes: 
-      - db-data:/var/lib/mysql
+      - maria-db:/var/lib/mysql
     networks:
       - app-network
   
   php:
     build:
       context: .
-      dockerfile: /dockerfiles/Dockerfile.php
+      dockerfile: dockerfiles/Dockerfile.php
     image: php
     container_name: "php"
     restart: always
@@ -33,7 +33,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: /dockerfiles/Dockerfile.nginx
+      dockerfile: dockerfiles/Dockerfile.nginx
     image: nginx
     container_name: "nginx"
     restart: "always"
@@ -50,7 +50,11 @@ networks:
   app-network:
     driver: bridge
 volumes:
-  db-data:
+  maria-db:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./src/db-data
 
     
