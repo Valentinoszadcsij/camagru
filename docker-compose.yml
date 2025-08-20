@@ -11,6 +11,7 @@ services:
     env_file: ".env"
     volumes: 
       - maria-db:/var/lib/mysql
+      - ./mariadb/init-users.sql:/docker-entrypoint-initdb.d/init-users.sql
     networks:
       - app-network
   
@@ -23,6 +24,7 @@ services:
     restart: always
     ports:
      - "9000:9000"
+    env_file: ".env"
     volumes:
      - ./src:/var/www/html
     depends_on:

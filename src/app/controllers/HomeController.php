@@ -10,11 +10,22 @@ class HomeController
 {
     public function index()
     {
-        // 1. Model: Get data from the model
-        $user = new User();
-        $message = $user->getWelcomeMessage();
+        $message = "";
 
-        // 2. View: Pass the data to the view
-        include __DIR__ . '/../views/home.html';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['name'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $pass = $_POST['password'] ?? '';
+
+            if (!empty($name) && !empty($email) && !empty($pass)) {
+                $user = new User();
+                $pass = password_hash($pass, PASSWORD_DEFAULT);
+                $message = $user->registerNewUser($name, $email, $pass);
+            }
+            else {
+                $message = "Please fill in all fields";
+            }
+        }
+        include __DIR__ . "/../views/home.php";
     }
 }

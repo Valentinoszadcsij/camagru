@@ -34,6 +34,9 @@ mysql -u root -p"$MARIADB_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON $MARIADB_DA
 mysql -u root -p"$MARIADB_ROOT_PASSWORD" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_ROOT_PASSWORD';"
 mysql -u root -p"$MARIADB_ROOT_PASSWORD" -e "FLUSH PRIVILEGES;"
 
+echo "Running init-users.sql script..."
+mysql -u root -p"$MARIADB_ROOT_PASSWORD" "$MARIADB_DATABASE" < /docker-entrypoint-initdb.d/init-users.sql
+
 echo "Shutting down MariaDB..."
 mysqladmin -u root -p"$MARIADB_ROOT_PASSWORD" shutdown
 
