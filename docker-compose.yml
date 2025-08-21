@@ -11,7 +11,7 @@ services:
     env_file: ".env"
     volumes: 
       - maria-db:/var/lib/mysql
-      - ./mariadb/init-users.sql:/docker-entrypoint-initdb.d/init-users.sql
+      - ./mariadb/init-tables.sql:/docker-entrypoint-initdb.d/init-tables.sql
     networks:
       - app-network
   
