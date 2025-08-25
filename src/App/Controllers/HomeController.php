@@ -23,6 +23,6 @@ class HomeController
                 $message = "Please fill in all fields";
             }
         }
-        include __DIR__ . "/../views/home.php";
+        include __DIR__ . "/../Views/home.php";
     }
 }

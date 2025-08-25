@@ -40,7 +40,7 @@ services:
     container_name: "nginx"
     restart: "always"
     ports:
-      - "443:443"
+      - "8443:443"
     volumes:
       - ./src:/var/www/html
     depends_on:
@@ -53,10 +53,6 @@ networks:
     driver: bridge
 volumes:
   maria-db:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./src/db-data
+
 
     
