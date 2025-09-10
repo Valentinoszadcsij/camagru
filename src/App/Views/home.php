@@ -8,16 +8,19 @@
 </head>
 <body>
     <nav>Navbar here</nav>
-
-    <h1>Register User</h1>
+    <div class="auth">
+        <a href="/Auth/register">Register</a>
+        <a href="/Auth/login">Login</a>
+    </div>
+    <!-- <h1>Register User</h1>
     <form method="POST" action="">
         <label>Name: <input type="text" name="name" required></label><br>
         <label>Email: <input type="email" name="email" required></label><br>
         <label>Password: <input type="password" name="password" required></label><br>   
         <button type="submit">Register</button>
-    </form>
+    </form> -->
 
-    <p><?php echo $message ?? ''; ?></p>
+    <!-- <p><?php echo $message ?? ''; ?></p> -->
 
     <footer>Footer</footer>
 </body>

@@ -21,12 +21,13 @@ class AuthController
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            header('Location: /dashboard');
+            header('Location: https://github.com');
             exit;
         }
 
         $_SESSION['error'] = "Invalid email or password.";
-        header('Location: /login');
+        header('Location: /Auth/login');
+        exit;
     }
 
 
@@ -35,7 +36,7 @@ class AuthController
     {
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            include_once __DIR__ . ("/../Views/register.php");
+            require_once __DIR__ . ("/../Views/register.php");
             exit;
         }
 
@@ -46,7 +47,7 @@ class AuthController
 
         if (User::findByEmail($email)) {
             $_SESSION['error'] = "Email already in use.";
-            header('Location: /../Views/register');
+            header('Location: /Auth/register');
             return;
         }
 
@@ -61,6 +62,6 @@ class AuthController
     {
         session_start();
         session_destroy();
-        header('Location: /login');
+        header('Location: /Auth/login');
     }
 }
