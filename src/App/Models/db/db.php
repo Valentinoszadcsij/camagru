@@ -1,5 +1,7 @@
 <?php
 
+use \PDO;
+
 function getPDO(){
 	static $pdo = null;
 	if ($pdo === null) {
