@@ -7,21 +7,32 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <nav>Navbar here</nav>
-    <div class="auth">
-        <a href="/Auth/register">Register</a>
-        <a href="/Auth/login">Login</a>
+    <div class="grid-layout">
+        <nav class="navbar">Navbar here
+            <div class="auth">
+                <a href="/Auth/register">Register</a>
+                <a href="/Auth/login">Login</a>
+            </div>
+        </nav>
+        <div class="menu">
+            <ul>
+                <li>Home</li>
+                <li>My Gallery</li>
+            </ul>
+        </div>
+        <div class="main">main here</div>
+        <div class="sidebar">sidebar here</div>
+        <!-- <h1>Register User</h1>
+        <form method="POST" action="">
+            <label>Name: <input type="text" name="name" required></label><br>
+            <label>Email: <input type="email" name="email" required></label><br>
+            <label>Password: <input type="password" name="password" required></label><br>   
+            <button type="submit">Register</button>
+        </form> -->
+    
+        <!-- <p><?php echo $message ?? ''; ?></p> -->
+    
+        <footer class="footer">Footer</footer>
     </div>
-    <!-- <h1>Register User</h1>
-    <form method="POST" action="">
-        <label>Name: <input type="text" name="name" required></label><br>
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Password: <input type="password" name="password" required></label><br>   
-        <button type="submit">Register</button>
-    </form> -->
-
-    <!-- <p><?php echo $message ?? ''; ?></p> -->
-
-    <footer>Footer</footer>
 </body>
 </html>
