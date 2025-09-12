@@ -12,6 +12,9 @@
             <div class="auth">
                 <a href="/Auth/register">Register</a>
                 <a href="/Auth/login">Login</a>
+                <form method="POST" action="/Auth/logout">
+                     <button type="submit">Logout</button>
+                </form>
             </div>
         </nav>
         <div class="menu">

@@ -60,8 +60,30 @@ class AuthController
 
     public function logout()
     {
-        session_start();
-        session_destroy();
-        header('Location: /Auth/login');
+        
+        // Expire the session cookie on the client
+        if (ini_get("session.use_cookies")) {
+            session_start();
+    
+            // Clear session variables
+            $_SESSION = [];
+    
+            // Destroy session on the server
+            session_destroy();
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000, // Expire in the past
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
+            );
+        }
+
+        // Redirect after logout
+        header('Location: /');
+        exit;
     }
 }
