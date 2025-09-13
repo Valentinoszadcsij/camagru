@@ -10,11 +10,14 @@
     <div class="grid-layout">
         <nav class="navbar">Navbar here
             <div class="auth">
+<?php if(!(isset($_SESSION['user_id']))): ?>                
                 <a href="/Auth/register">Register</a>
                 <a href="/Auth/login">Login</a>
+<?php else: ?>                
                 <form method="POST" action="/Auth/logout">
                      <button type="submit">Logout</button>
                 </form>
+<?php endif; ?>                
             </div>
         </nav>
         <div class="menu">
