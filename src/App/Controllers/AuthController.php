@@ -8,12 +8,12 @@ class AuthController
 {
     public function login()
     {
+        session_start();
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
             require_once __DIR__ . '/../Views/login.php';
             exit;
         }
-        session_start();
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
 
@@ -21,7 +21,7 @@ class AuthController
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            header('Location: https://github.com');
+            header('Location: /UserProfile');
             exit;
         }
 

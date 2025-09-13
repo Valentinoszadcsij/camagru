@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <h2>Login</h2>
 <?php if (!empty($_SESSION['error'])): ?>
     <p style="color:red;"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
