@@ -27,6 +27,14 @@ class User
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function findByID($id)
+    {
+        $pdo = getPDO();
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE id=?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
     public static function create($name, $email, $password)
     {
         $pdo = getPDO();
