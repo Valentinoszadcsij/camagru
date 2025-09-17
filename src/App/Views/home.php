@@ -13,7 +13,8 @@
 <?php if(!(isset($_SESSION['user_id']))): ?>                
                 <a href="/Auth/register">Register</a>
                 <a href="/Auth/login">Login</a>
-<?php else: ?>                
+<?php else: ?>
+                <a href="/UserProfile">My Profile</a>                
                 <form method="POST" action="/Auth/logout">
                      <button type="submit">Logout</button>
                 </form>
