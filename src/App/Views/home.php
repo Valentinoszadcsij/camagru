@@ -8,17 +8,19 @@
 </head>
 <body>
     <div class="grid-layout">
-        <nav class="navbar">Navbar here
-            <div class="auth">
-<?php if(!(isset($_SESSION['user_id']))): ?>                
+        <nav class="navbar">
+            <div class="navbar-left">LOGO</div>
+            <div class="navbar-center">42Fans</div>
+            <div class="navbar-right">
+            <?php if(!(isset($_SESSION['user_id']))): ?>                
                 <a href="/Auth/register">Register</a>
                 <a href="/Auth/login">Login</a>
-<?php else: ?>
-                <a href="/UserProfile">My Profile</a>                
+            <?php else: ?>
+                <a href="/UserProfile"><img src="/images/icons/iconmonstr-user-circle-thin.svg" alt=""></a>                
                 <form method="POST" action="/Auth/logout">
                      <button type="submit">Logout</button>
                 </form>
-<?php endif; ?>                
+            <?php endif; ?>                
             </div>
         </nav>
         <div class="menu">
