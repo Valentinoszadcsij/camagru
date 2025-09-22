@@ -11,7 +11,7 @@ class AuthController
         session_start();
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            require_once __DIR__ . '/../Views/login.php';
+            require_once __DIR__ . '/../Views/auth.php';
             exit;
         }
         $email = $_POST['email'] ?? '';
@@ -34,13 +34,13 @@ class AuthController
 
     public function register()
     {
+        session_start();
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            require_once __DIR__ . ("/../Views/register.php");
+            require_once __DIR__ . ("/../Views/auth.php");
             exit;
         }
 
-        session_start();
         $name = $_POST['name'] ?? '';
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';

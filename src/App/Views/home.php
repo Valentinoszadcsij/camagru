@@ -6,31 +6,37 @@
     <title>Camagru</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body class="bg-secondary txt-primary">
     <div class="grid-layout">
-        <nav class="navbar">
+        <nav class="navbar bg-primary bord-primary">
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>
             <div class="navbar-right">
             <?php if(!(isset($_SESSION['user_id']))): ?>                
-                <a href="/Auth/register">Register</a>
-                <a href="/Auth/login">Login</a>
+                <a href="/Auth/register">
+                    <div class="icon-btn profile"></div>
+                </a>
             <?php else: ?>
-                <a href="/UserProfile"><img src="/images/icons/iconmonstr-user-circle-thin.svg" alt=""></a>                
+                <a href="/UserProfile">
+                    <div class="icon-btn profile"></div>
+                    <!-- <img class="icon-btn" src="/images/icons/iconmonstr-user-circle-thin.svg" alt=""> -->
+                </a>                
                 <form method="POST" action="/Auth/logout">
-                     <button type="submit">Logout</button>
+                     <button type="submit" class="icon-btn logout" aria-label="Log out">
+                        <!-- <img src="/images/icons/iconmonstr-log-out-3.svg" alt="Log out" aria-label="Log out"> -->
+                    </button>
                 </form>
             <?php endif; ?>                
             </div>
         </nav>
-        <div class="menu">
+        <div class="menu bg-primary bord-primary">
             <ul>
                 <li>Home</li>
                 <li>My Gallery</li>
             </ul>
         </div>
         <div class="main">main here</div>
-        <div class="sidebar">sidebar here</div>
+        <div class="sidebar bg-secondary bord-primary">sidebar here</div>
         <!-- <h1>Register User</h1>
         <form method="POST" action="">
             <label>Name: <input type="text" name="name" required></label><br>
