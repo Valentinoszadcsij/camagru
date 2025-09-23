@@ -19,12 +19,9 @@
             <?php else: ?>
                 <a href="/UserProfile">
                     <div class="icon-btn profile"></div>
-                    <!-- <img class="icon-btn" src="/images/icons/iconmonstr-user-circle-thin.svg" alt=""> -->
                 </a>                
                 <form method="POST" action="/Auth/logout">
-                     <button type="submit" class="icon-btn logout" aria-label="Log out">
-                        <!-- <img src="/images/icons/iconmonstr-log-out-3.svg" alt="Log out" aria-label="Log out"> -->
-                    </button>
+                     <button type="submit" class="icon-btn logout" aria-label="Log out"></button>
                 </form>
             <?php endif; ?>                
             </div>

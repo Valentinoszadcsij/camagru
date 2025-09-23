@@ -146,21 +146,26 @@ button {
 /* Flex container for auth forms */
 .auth-page {
     display: flex;
-    justify-content: center;
-    gap: 40px;
-    align-items: flex-start;
-    max-width: 800px;
+    justify-content: space-evenly;
+    
+    align-items: center;
+    max-width: 90vw;
     margin: auto;
 }
-
+.auth-form {
+    height: auto;
+}
+.register, .login {
+    height: 90vh;
+}
 /* Style for each form column */
-.auth-page form {
+/* .auth-page form {
     background-color: #fff;
     padding: 20px 30px;
-    border-radius: 8px;
+    
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 300px;
-}
+} */
 
 /* Optional: Headings */
 .auth-page h2 {
