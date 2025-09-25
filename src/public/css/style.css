@@ -7,6 +7,11 @@ body {
     text-align: center;
     padding: 10px;
 }
+
+body * {
+    box-sizing: border-box;
+}
+
 h1 {
     color: #007bff;
 }
@@ -142,64 +147,3 @@ button {
   }
 }
 
-/* authorization page */
-/* Flex container for auth forms */
-.auth-page {
-    display: flex;
-    justify-content: space-evenly;
-    
-    align-items: center;
-    max-width: 90vw;
-    margin: auto;
-}
-.auth-form {
-    height: auto;
-}
-.register, .login {
-    height: 90vh;
-}
-/* Style for each form column */
-/* .auth-page form {
-    background-color: #fff;
-    padding: 20px 30px;
-    
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 300px;
-} */
-
-/* Optional: Headings */
-.auth-page h2 {
-    text-align: center;
-}
-
-/* Form fields */
-.auth-page input[type="text"],
-.auth-page input[type="email"],
-.auth-page input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Submit buttons */
-.auth-page button {
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.auth-page button:hover {
-    background-color: #2980b9;
-}
-
-/* Error and success messages */
-.auth-page p {
-    margin: 10px 0;
-}
