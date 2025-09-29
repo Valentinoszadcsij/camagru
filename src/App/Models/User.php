@@ -41,4 +41,13 @@ class User
         $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
         $stmt->execute([$name, $email, $password]);
     }
+
+    public static function is_logged_in(): bool
+    {
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true)
+        {
+            return true;
+        }
+        return false;
+    }
 }

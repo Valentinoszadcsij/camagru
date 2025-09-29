@@ -6,21 +6,51 @@ use App\Models\User;
 
 class AuthController
 {
-    public function login()
+    public function index()
     {
         session_start();
+        if (User::is_logged_in())
+        {
+            header('Location: /UserProfile');
+            exit;
+        }
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
             require_once __DIR__ . '/../Views/auth.php';
             exit;
         }
         $email = $_POST['email'] ?? '';
+        $user = User::findByEmail($email);
+        $_SESSION['email'] = $email;
+        if ($user)
+        {
+            $_SESSION['user_id'] = $user['id'];
+            header('Location: /Auth/login');
+            exit;
+        }
+        $_SESSION['error'] = "no_user";
+        $this->register();
+    }
+
+    public function login()
+    {
+        session_start();
+        if (User::is_logged_in())
+        {
+            header('Location: /UserProfile');
+            exit;
+        }
+        if ($_SERVER["REQUEST_METHOD"] === "GET")
+        {
+            require_once __DIR__ . '/../Views/login.php';
+            exit;
+        }
         $password = $_POST['password'] ?? '';
 
-        $user = User::findByEmail($email);
+        $user = User::findByEmail($_SESSION['email']);
 
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['logged_in'] = true;
             header('Location: /UserProfile');
             exit;
         }
@@ -35,6 +65,11 @@ class AuthController
     public function register()
     {
         session_start();
+        if (User::is_logged_in())
+        {
+            header('Location: /UserProfile');
+            exit;
+        }
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
             require_once __DIR__ . ("/../Views/auth.php");

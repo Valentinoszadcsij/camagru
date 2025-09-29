@@ -12,8 +12,8 @@
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>
             <div class="navbar-right">
-            <?php if(!(isset($_SESSION['user_id']))): ?>                
-                <a href="/Auth/register">
+            <?php if(!(App\Models\User::is_logged_in())): ?>                
+                <a href="/Auth">
                     <div class="icon-btn profile"></div>
                 </a>
             <?php else: ?>
