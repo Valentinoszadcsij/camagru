@@ -14,9 +14,9 @@
             <div class="navbar-right">
             <?php
 
-use App\Models\User;
+            use App\Models\User;
 
- if(User::is_logged_in() == false): ?>                
+            if(User::is_logged_in() == false): ?>                
                 <a href="/Auth/">
                     <div class="icon-btn profile"></div>
                 </a>
@@ -32,7 +32,9 @@ use App\Models\User;
     </nav>
     <div class="auth-form">
         <?php if (!empty($_SESSION['error'])) : ?>
-            <p style="color:red;"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
+            <?php if ($_SESSION['error'] === "no_user") : ?>
+            <p style="color:red;"><?php echo $_SESSION['email']; unset($_SESSION['error']); ?> doesn't exist!<br>Try again or <a href="/Auth/register">register</a></p>
+            <?php endif; ?>
         <?php endif; ?>
         <form method="POST" action="/auth">
             <input type="email" name="email" required><br>

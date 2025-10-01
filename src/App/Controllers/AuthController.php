@@ -29,7 +29,8 @@ class AuthController
             exit;
         }
         $_SESSION['error'] = "no_user";
-        $this->register();
+        header('Location: /Auth');
+        exit;
     }
 
     public function login()
@@ -72,7 +73,7 @@ class AuthController
         }
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            require_once __DIR__ . ("/../Views/auth.php");
+            require_once __DIR__ . ("/../Views/register.php");
             exit;
         }
 

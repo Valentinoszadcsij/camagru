@@ -9,7 +9,7 @@ class UserProfileController
     public function index()
     {
         session_start();
-        if((isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''))
+        if(User::is_logged_in())
         {
             $user = User::findByID($_SESSION['user_id']);
             $userName = $user['name'];
