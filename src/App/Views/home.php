@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camagru</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="bg-secondary txt-primary">
-    <div class="grid-layout">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Camagru</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body class="bg-secondary txt-primary">
+        <?php debug_session_to_console(); ?>
+        <div class="grid-layout">
         <nav class="navbar bg-primary bord-primary">
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>

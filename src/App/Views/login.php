@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camagru</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/auth.css">
-</head>
-<body class="bg-secondary auth-page">
-    <nav class="navbar bg-primary bord-primary">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Camagru</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/auth.css">
+    </head>
+    <body class="bg-secondary auth-page">
+        <nav class="navbar bg-primary bord-primary">
+            <?php debug_session_to_console(); ?>
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>
             <div class="navbar-right">

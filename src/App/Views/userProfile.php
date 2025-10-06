@@ -8,6 +8,6 @@
 </head>
 <body>
     <h2>HELLO <?php echo $userName?></h2>
-    
+    <?php debug_session_to_console(); ?>
 </body>
 </html>

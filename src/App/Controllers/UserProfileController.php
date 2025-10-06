@@ -1,8 +1,8 @@
 <?php
 namespace App\Controllers;
+require_once __DIR__ . '/../Utility/session_debug.php';
 
 use App\Models\User;
-
 class UserProfileController
 {
     // shows your own profile page

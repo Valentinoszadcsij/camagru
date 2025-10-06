@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../Utility/session_debug.php';
 use App\Models\User;
 
 class AuthController
@@ -89,7 +90,8 @@ class AuthController
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         User::create($name, $email, $hashedPassword);
-
+        $user = User::findByEmail($email);
+        $_SESSION['user_id'] = $user['id'];
         $_SESSION['success'] = "Registration successful. Please log in.";
         header('Location: /Auth/login');
     }
