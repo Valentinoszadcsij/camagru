@@ -7,13 +7,13 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body class="bg-secondary txt-primary">
-        <?php debug_session_to_console(); ?>
+    <script>console.log(<?php echo json_encode($_SESSION); ?>);</script>
         <div class="grid-layout">
         <nav class="navbar bg-primary bord-primary">
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>
             <div class="navbar-right">
-            <?php if(!(App\Models\User::is_logged_in())): ?>                
+            <?php if($_SESSION['user_password'] !== "verified"): ?>                
                 <a href="/Auth">
                     <div class="icon-btn profile"></div>
                 </a>

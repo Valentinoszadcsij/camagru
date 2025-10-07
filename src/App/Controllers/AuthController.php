@@ -2,27 +2,28 @@
 namespace App\Controllers;
 
 require_once __DIR__ . '/../Models/User.php';
-require_once __DIR__ . '/../Utility/session_debug.php';
 use App\Models\User;
+use App\Utility\Auth;
+use App\Utility\Session;
 
 class AuthController
 {
     public function index()
     {
-        session_start();
-        if (User::is_logged_in())
+        Session::session_init();
+        if ($_SESSION['user_password'] === "verified")
         {
             header('Location: /UserProfile');
             exit;
         }
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            require_once __DIR__ . '/../Views/auth.php';
+            include __DIR__ . '/../Views/auth.php';
             exit;
         }
         $email = $_POST['email'] ?? '';
         $user = User::findByEmail($email);
-        $_SESSION['email'] = $email;
+        $_SESSION['user_email'] = $email;
         if ($user)
         {
             $_SESSION['user_id'] = $user['id'];
@@ -36,45 +37,53 @@ class AuthController
 
     public function login()
     {
-        session_start();
-        if (User::is_logged_in())
+        Session::session_init();
+        if ($_SESSION['user_password'] === "verified")
         {
             header('Location: /UserProfile');
             exit;
         }
+        elseif (empty($_SESSION['user_email']))
+        {
+            header('Location: /Auth');
+            exit;
+        }
+    
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            require_once __DIR__ . '/../Views/login.php';
+            include __DIR__ . '/../Views/login.php';
             exit;
         }
+        
         $password = $_POST['password'] ?? '';
-
-        $user = User::findByEmail($_SESSION['email']);
-
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['logged_in'] = true;
+        $user = User::findByEmail($_SESSION['user_email']);
+        if (Auth::verify($user, $password))
+        {
             header('Location: /UserProfile');
             exit;
         }
+        else
+        {
+            header('Location: /Auth/login');
+            exit;
+        }
 
-        $_SESSION['error'] = "Invalid email or password.";
-        header('Location: /Auth/login');
-        exit;
+ 
     }
 
 
 
     public function register()
     {
-        session_start();
-        if (User::is_logged_in())
+        Session::session_init();
+        if ($_SESSION['user_password'] === "verified")
         {
             header('Location: /UserProfile');
             exit;
         }
         if ($_SERVER["REQUEST_METHOD"] === "GET")
         {
-            require_once __DIR__ . ("/../Views/register.php");
+            include __DIR__ . ("/../Views/register.php");
             exit;
         }
 
@@ -85,7 +94,7 @@ class AuthController
         if (User::findByEmail($email)) {
             $_SESSION['error'] = "Email already in use.";
             header('Location: /Auth/register');
-            return;
+            exit;
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

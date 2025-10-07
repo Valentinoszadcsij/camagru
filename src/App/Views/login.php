@@ -10,7 +10,7 @@
     </head>
     <body class="bg-secondary auth-page">
         <nav class="navbar bg-primary bord-primary">
-            <?php debug_session_to_console(); ?>
+            <script>console.log(<?php echo json_encode($_SESSION); ?>);</script>
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>
             <div class="navbar-right">
@@ -35,10 +35,9 @@
     <div class="auth-form">
         <div class="login bg-secondary bord-primary">
             <h2>Login</h2>
-            <?php if (!empty($_SESSION['error'])): ?>
+            <?php if (isset($_SESSION['error']) && !empty($_SESSION['error'])): ?>
                 <p style="color:red;"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
             <?php endif; ?>
-            <p style="color:gray"><?php echo session_id();?></p>
             <form method="POST" action="/auth/login">
                 <label for="password">Password: </label>
                 <input type="password" id="password" name="password" required><br>
@@ -46,5 +45,6 @@
             </form> 
         </div>    
     </div>
-</body>
+<script>console.log("Session_id: <?php echo session_id(); ?>");</script> 
+</body>    
 </html>

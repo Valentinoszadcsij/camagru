@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/auth.css">
 </head>
 <body class="bg-secondary auth-page">
-    <?php debug_session_to_console(); ?>
+    <script>console.log(<?php echo json_encode($_SESSION); ?>);</script>
     <nav class="navbar bg-primary bord-primary">
             <div class="navbar-left">LOGO</div>
             <div class="navbar-center">42Fans</div>

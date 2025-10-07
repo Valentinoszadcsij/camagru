@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <h2>HELLO <?php echo $userName?></h2>
-    <?php debug_session_to_console(); ?>
+<script>console.log(<?php echo json_encode($_SESSION); ?>);</script>
+<script>console.log("Session_id: <?php echo session_id(); ?>");</script> 
 </body>
 </html>
