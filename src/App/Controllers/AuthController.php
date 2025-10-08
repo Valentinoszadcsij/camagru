@@ -43,7 +43,7 @@ class AuthController
             header('Location: /UserProfile');
             exit;
         }
-        elseif (empty($_SESSION['user_email']))
+        elseif (empty($_SESSION['user_id']))
         {
             header('Location: /Auth');
             exit;

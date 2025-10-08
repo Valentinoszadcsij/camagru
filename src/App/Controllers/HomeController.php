@@ -1,12 +1,13 @@
 <?php
 namespace App\Controllers;
 use App\Models\User;
+use App\Utility\Session;
 
 class HomeController
 {
     public function index()
     {
-        session_start();
+        Session::session_init();
         include __DIR__ . "/../Views/home.php";
     }
 }
