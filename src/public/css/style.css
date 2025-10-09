@@ -70,7 +70,11 @@ button {
     padding: 20px;
     min-width: 200px;
 }
-
+.menu li.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
 .main {
     grid-area: main;
     padding: 20px;

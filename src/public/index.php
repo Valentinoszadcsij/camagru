@@ -12,4 +12,5 @@ require_once __DIR__ . '/../core/Router.php';
 
 $router = new Router;
 $uri = $_SERVER['REQUEST_URI'];
+define('WHERE_AM_I', $router->where_am_i($uri));
 $router->dispatch($uri);

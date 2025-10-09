@@ -35,4 +35,13 @@ class Router {
             echo "Controller not found!";
         }
     }
+
+    public function where_am_i($uri)
+    {
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $segments = explode('/', trim($uri, '/'));
+        if (empty($segments[0]))
+            $segments[0] = 'home';
+        return $segments[0];
+    }
 }

@@ -28,8 +28,8 @@
     </nav>
     <div class="menu bg-primary bord-primary">
         <ul>
-            <li>Home</li>
-            <li>My Gallery</li>
+            <li class="<?= WHERE_AM_I === 'home' ? 'active' : ''?>">Home</li>
+            <li class="<?= WHERE_AM_I === 'UserProfile' ? 'active' : ''?>">My Profile</li>
         </ul>
     </div>
     <div class="main">
